@@ -1,7 +1,130 @@
-<ul>
-  <li><a href="https://www.armyja.cn" target="_blank">博客</a></li>
-  <li><a href="https://algorithm.armyja.cn" target="_blank">算法</a></li>
-  <li><a href="https://front-end.armyja.cn" target="_blank">前端</a></li>
-  <li><a href="https://tool.armyja.cn" target="_blank">工具</a></li>
-  <li><a href="https://kingdee.armyja.cn" target="_blank">金蝶云星瀚</a></li>
-</ul>
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="UTF-8" />
+    <style>
+      .background {
+        width: 500px;
+        height: 100px;
+        background-color: pink;
+      }
+
+      .box {
+        width: 50px;
+        overflow: hidden;
+      }
+
+      .text {
+        white-space: nowrap;
+      }
+
+      .fadingEffect {
+        width: 100%;
+        animation: showHide 5s ease-in alternate infinite;
+      }
+
+      @keyframes showHide {
+        0% {
+          width: 100%;
+        }
+        40% {
+          width: 0%;
+        }
+        60% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .animation-text-wipe {
+        opacity: 0;
+        -webkit-mask-image: linear-gradient(
+          to right,
+          #000 0%,
+          transparent 1% 50%,
+          #000 50% 100%
+        );
+        -webkit-mask-size: 400%;
+      }
+      .animation-text-wipe.animate-in {
+        animation-name: text-wipe;
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      .anim-delay-1 {
+        animation-delay: 1s;
+      }
+
+      @keyframes text-wipe {
+        0% {
+          opacity: 1;
+          -webkit-mask-position: 2%;
+        }
+        30% {
+          opacity: 1;
+          -webkit-mask-position: -33%;
+        }
+        60% {
+          opacity: 1;
+          -webkit-mask-position: -33%;
+        }
+        90% {
+          opacity: 1;
+          -webkit-mask-position: 2%;
+        }
+        100% {
+          opacity: 1;
+          -webkit-mask-position: 2%;
+        }
+      }
+    </style>
+  </header>
+  <body>
+    <ul>
+      <li><a href="https://www.armyja.cn" target="_blank">博客</a></li>
+      <li><a href="https://algorithm.armyja.cn" target="_blank">算法</a></li>
+      <li><a href="https://front-end.armyja.cn" target="_blank">前端</a></li>
+      <li><a href="https://tool.armyja.cn" target="_blank">工具</a></li>
+      <li>
+        <a href="https://kingdee.armyja.cn" target="_blank">金蝶云星瀚</a>
+      </li>
+    </ul>
+    <div class="background">
+      <div>第一種</div>
+      <div class="box fadingEffect">
+        <div class="text">我是想要有擦除回放效果的測試文字</div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="background">
+      <div>第二種</div>
+      <div class="">
+        <div class="animation-text-wipe animate-in anim-delay-1">
+          我是想要有擦除回放效果的測試文字我是想要有擦除回放效果的測試文字我是想要有擦除回放效果的測試文字
+        </div>
+      </div>
+    </div>
+    <script>
+      function getTextWidth(text, font) {
+        const canvas =
+          getTextWidth.canvas ||
+          (getTextWidth.canvas = document.createElement("canvas"));
+        const context = canvas.getContext("2d");
+        context.font = font;
+        const metrics = context.measureText(text);
+        return metrics.width;
+      }
+      console.log(
+        getTextWidth(
+          "This example uses multi-position color stops送送送送送",
+          "normal 30px Microsoft YaHei"
+        )
+      );
+    </script>
+  </body>
+</html>
