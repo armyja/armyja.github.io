@@ -158,9 +158,9 @@
 
         timeoutFn = fn();
       }
-      
+
       (() => {
-        generate();
+        setTimeout(() => generate(), 1000);
       })();
     </script>
   </body>
